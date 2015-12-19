@@ -1,0 +1,16 @@
+[package]
+name = "iron-maud"
+version = "0.0.1"
+authors = ["vycb <vycb777@gmail.com>"]
+description = "Testing maud with iron"
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/vycb/iron-maud.git"
+
+[dependencies]
+
+iron = { version = "*", default-features = false }
+rustc-serialize = "^0.3.15"
+maud = "*"
+maud_macros = "*"
+params = "*"
