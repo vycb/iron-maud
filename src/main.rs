@@ -1,11 +1,10 @@
 #![feature(plugin)]
 #![plugin(maud_macros)]
 extern crate maud;
-mod tpl;
-extern crate rustc_serialize;
 extern crate iron;
 extern crate params;
 use std::collections::HashMap;
+mod tpl;
 use iron::prelude::*;
 use iron::mime::Mime;
 use iron::{Handler,status};
@@ -32,8 +31,10 @@ fn handle(req: &mut Request) -> IronResult<Response> {
     /*let content_type = "application/json".parse::<Mime>().unwrap();
     Ok(Response::with((content_type, status::Ok, "{\"!\"}")))*/
     let mut resp = Response::new();
-    let name = "Rust";
- 		resp.set_mut(content_type).set_mut(tpl::gethtml(&name)).set_mut(status::Ok);
+    let mut map = HashMap::new();
+    map.insert("name", "Rust");
+    map.insert("greating", "Great Rust!");
+ 		resp.set_mut(content_type).set_mut(tpl::gethtml(&map)).set_mut(status::Ok);
 	Ok(resp)
 }
 
